@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Faça já seu cadastro!</title>
+	<script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/person.css" />
+	<script src="/webjars/jquery/5.0.1/jquery.min.js"></script>
+	<link rel="icon" href="imagens/icon.png" />
+
+</h:head>
+<h:body style="text-align:center">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Dungeos</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="index.xhtml">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="listar.xhtml">
+							Personagens</a></li>
+					<li class="nav-item"><a class="nav-link" href="usuario.xhtml">Usuários</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="login.xhtml">Logout</a>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search"
+						aria-label="Search" />
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 mt-5">
+				<h1>Editar personagem</h1>
+
+				<h:form>
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Id do personagem" />
+						<h:inputText type="text" id="idperson" name="idperson" readonly="#{facesContext.renderResponse}"
+							class="form-control" placeholder="Entre com o ID"
+							style="text-align:center" value="#{personBean.person.idperson}"
+							required="true"
+							requiredMessage="Não é possível editar o campo">
+							<f:validateLength minimum="1" maximum="200" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="person" />
+					</p>
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Nome do Personagem" />
+						<h:inputText type="text" id="nomeperson" name="nomeperson"
+							class="form-control" placeholder="Nome Personagem"
+							style="text-align:center" value="#{personBean.person.nomeperson}"
+							required="true"
+							requiredMessage="Entre com o nome do personagem, por favor">
+							<f:validateLength minimum="1" maximum="200" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="user" />
+					</p>
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Alinhamento personagem" />
+						<h:inputText type="text" id="alinhamentoperson"
+							name="alinhamentoperson" class="form-control"
+							placeholder="Alinhamento personagem" style="text-align:center"
+							value="#{personBean.person.alinhamentoperson}" required="true"
+							requiredMessage="Entre com o alinhamento, por favor">
+							<f:validateLength minimum="1" maximum="200" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="alinhamento" />
+					</p>
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Nivel do personagem" />
+						<h:inputText type="date" id="nivelperson" name="nivelperson"
+							class="form-control" placeholder="Nível do personagem"
+							style="text-align:center"
+							value="#{personBean.person.nivelperson}" required="true"
+							requiredMessage="Insira o nível do seu personagem, por favor" />
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="nivelperson" />
+					</p>
+					<p>
+						<h:outputLabel for="input" value="Vida Personagem" class="sr-only" />
+						<h:inputText type="text" id="vidaperson" name="vidaperson"
+							placeholder="Vida do personagem" class="form-control"
+							style="text-align:center" value="#{personBean.person.vidaperson}"
+							required="true"
+							requiredMessage="Entre com a vida do personagem, por favor">
+							<f:passThroughAttribute name="type" value="vidaperson" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="input" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Armadura do personagem" />
+						<h:inputText type="text" id="armaduraperson" name="armaduraperson"
+							class="form-control" placeholder="Armadura do personagem"
+							style="text-align:center"
+							value="#{personBean.person.armaduraperson}" required="true"
+							requiredMessage="Entre com nível de armadura, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="armaduraperson" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Força do personagem" />
+						<h:inputText type="text" id="strperson" name="strperson"
+							class="form-control" placeholder="STR do personagem"
+							style="text-align:center" value="#{personBean.person.strperson}"
+							required="true"
+							requiredMessage="Qual o STR do personagem, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="strperson" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Destreza do personagem" />
+						<h:inputText type="text" id="dexperson" name="dexperson"
+							class="form-control" placeholder="Dex de seu personagem"
+							style="text-align:center" value="#{personBean.person.dexperson}"
+							required="true"
+							requiredMessage="Qual o dex de seu personagem, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="dexperson" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Constituição do personagem" />
+						<h:inputText type="text" id="conperson" name="conperson"
+							class="form-control" placeholder="Qual é o CON"
+							style="text-align:center" value="#{personBean.person.conperson}"
+							required="true" requiredMessage="Entre com o con, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="conperson" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Inteligência do personagem" />
+						<h:inputText type="text" id="inteperson" name="inteperson"
+							class="form-control" placeholder="Int do personagem"
+							style="text-align:center" value="#{personBean.person.inteperson}"
+							required="true" requiredMessage="Entre com o int, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="inteperson" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Sabedoria do personagem" />
+						<h:inputText type="text" id="sabperson" name="sabperson"
+							class="form-control" placeholder="Qual é o SAB do seu personagem"
+							style="text-align:center" value="#{personBean.person.sabperson}"
+							required="true" requiredMessage="Entre com o sab, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="sabperson" />
+					</p>
+
+					<p>
+						<h:outputLabel for="input" class="sr-only"
+							value="Carisma do personagem" />
+						<h:inputText type="text" id="carperson" name="carperson"
+							class="form-control" placeholder="Qual é o car"
+							style="text-align:center" value="#{personBean.person.carperson}"
+							required="true" requiredMessage="Entre com o car, por favor">
+							<f:validateLength minimum="1" maximum="10" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="carperson" />
+					</p>
+					<div class="form-group">
+						<h:button class="btn btn-primary " type="clear" value="Limpar" />
+						<h:commandButton value="Submit" class="btn btn-primary"
+							action="#{personBean.editar}">
+						</h:commandButton>
+						<p>
+							<span>Voltar para o home <a href="/login.xhtml"
+								th:href="index.xhtml">Clique aqui para voltar!</a></span>
+						</p>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+	<footer class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-facebook-f"></i></a>
+
+				<!-- Twitter -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-twitter"></i></a>
+
+				<!-- Google -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-google"></i></a>
+
+				<!-- Instagram -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-instagram"></i></a>
+
+				<!-- Linkedin -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-linkedin-in"></i></a>
+
+				<!-- Github -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-github"></i></a>
+			</section>
+			<!-- Section: Social media -->
+
+			<!-- Section: Form -->
+			<section class="">
+				<form action="">
+					<!--Grid row-->
+					<div class="row d-flex justify-content-center">
+						<!--Grid column-->
+						<div class="col-auto">
+							<p class="pt-2">
+								<strong>Sign up for our newsletter</strong>
+							</p>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div class="col-md-5 col-12">
+							<!-- Email input -->
+							<div class="form-outline form-white mb-4">
+								<input type="email" id="form5Example21" class="form-control" />
+								<label class="form-label" for="form5Example21">Email
+									address</label>
+							</div>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div class="col-auto">
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-outline-light mb-4">
+								Subscribe</button>
+						</div>
+						<!--Grid column-->
+					</div>
+					<!--Grid row-->
+				</form>
+			</section>
+			<!-- Section: Form -->
+
+			<!-- Section: Text -->
+			<section class="mb-4">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+					distinctio earum repellat quaerat voluptatibus placeat nam, commodi
+					optio pariatur est quia magnam eum harum corrupti dicta, aliquam
+					sequi voluptate quas.</p>
+			</section>
+			<!-- Section: Text -->
+
+			<!-- Section: Links -->
+			<section class="">
+				<!--Grid row-->
+				<div class="row">
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+				</div>
+				<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright: <a class="text-white"
+				href="https://mdbootstrap.com/">Dungeos.com.br</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<script src="/webjars/jquery/5.0.1/jquery/jquery.min.js"></script>
+	<script src="/webjars/jquery/5.0.1/popper.js/umd/popper.min.js"></script>
+	<script src="/webjars/jquery/5.0.1/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+</h:body>
+</html>

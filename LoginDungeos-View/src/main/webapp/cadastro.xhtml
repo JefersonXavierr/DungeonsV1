@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:th="http://www.thymeleaf.org">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Cadastre-se!</title>
+	<script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
+	<script src="/webjars/jquery/5.0.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/person.css" />
+	<link rel="icon" href="imagens/icon.png" />
+
+</h:head>
+<h:body style="text-align:center">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Dungeos</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="index.xhtml">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="person.xhtml">Criar Personagem</a></li>
+					<li class="nav-item"><a class="nav-link" href="usuario.xhtml">Usuários</a></li>
+					
+					<li class="nav-item"><a class="nav-link" href="login.xhtml">Logout</a>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search"
+						aria-label="Search" />
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 mt-5">
+				<h1>Cadastro</h1>
+				<h:form>
+					<p>
+						<h:outputLabel for="input" class="sr-only" value="Nome Completo" />
+						<h:inputText type="text" id="user" name="user"
+							class="form-control" placeholder="Nome Completo"
+							style="text-align:center" value="#{cadastroBean.user.nomeuser}"
+							required="true" requiredMessage="Entre com o nome, por favor">
+							<f:validateLength minimum="1" maximum="200" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="user" />
+					</p>
+					<p>
+						<h:outputLabel for="input" class="sr-only" value="Email" />
+						<h:inputText type="text" id="email" name="email"
+							class="form-control" placeholder="E-mail"
+							style="text-align:center" value="#{cadastroBean.user.email}"
+							required="true"
+							requiredMessage="Entre com o e-mail para o login, por favor">
+							<f:validateLength minimum="1" maximum="200" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="email" />
+					</p>
+					<p>
+						<h:outputLabel for="inputAddress" class="form-group col-md-6"
+							value="Data de Nascimento"/>
+						<h:inputText type="date" id="inputAddress" name="datanasc"
+							class="form-control" placeholder="Data de Nascimento"
+							style="text-align:center" value="#{cadastroBean.user.datanasc}"
+							required="true"
+							requiredMessage="Entre com a data de nascimento, por favor"><f:passThroughAttribute name="type" value="date"/></h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="nasc" />
+					</p>
+					<p>
+						<h:outputLabel for="input" value="Senha" class="sr-only" />
+						<h:inputText type="password" id="senha" name="senha"
+							placeholder="Senha" class="form-control"
+							value="#{cadastroBean.user.senha}" required="true"
+							requiredMessage="Entre com a senha, por favor" style="text-align:center">
+							<f:passThroughAttribute name="type" value="password" />
+						</h:inputText>
+						<h:messages infoClass="alert alert-success"
+							warnClass="alert alert-info" errorClass="alert alert-warning"
+							fatalClass="alert alert-danger" for="senha" />
+					</p>
+					<div class="form-group">
+						<h:button class="btn btn-primary " type="clear" value="Limpar" />
+						<h:commandButton value="Submit" class="btn btn-primary"
+							action="#{cadastroBean.submit}">
+						</h:commandButton>
+						<p>
+							<span>Já possui cadastro? <a href="/login.xhtml"
+								th:href="login.xhtml">Realize o login</a></span>
+						</p>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+	<footer class="bg-dark text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-facebook-f"></i></a>
+
+				<!-- Twitter -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-twitter"></i></a>
+
+				<!-- Google -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-google"></i></a>
+
+				<!-- Instagram -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-instagram"></i></a>
+
+				<!-- Linkedin -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-linkedin-in"></i></a>
+
+				<!-- Github -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!"
+					role="button"><i class="fab fa-github"></i></a>
+			</section>
+			<!-- Section: Social media -->
+
+			<!-- Section: Form -->
+			<section class="">
+				<form action="">
+					<!--Grid row-->
+					<div class="row d-flex justify-content-center">
+						<!--Grid column-->
+						<div class="col-auto">
+							<p class="pt-2">
+								<strong>Sign up for our newsletter</strong>
+							</p>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div class="col-md-5 col-12">
+							<!-- Email input -->
+							<div class="form-outline form-white mb-4">
+								<input type="email" id="form5Example21" class="form-control" />
+								<label class="form-label" for="form5Example21">Email
+									address</label>
+							</div>
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div class="col-auto">
+							<!-- Submit button -->
+							<button type="submit" class="btn btn-outline-light mb-4">
+								Subscribe</button>
+						</div>
+						<!--Grid column-->
+					</div>
+					<!--Grid row-->
+				</form>
+			</section>
+			<!-- Section: Form -->
+
+			<!-- Section: Text -->
+			<section class="mb-4">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+					distinctio earum repellat quaerat voluptatibus placeat nam, commodi
+					optio pariatur est quia magnam eum harum corrupti dicta, aliquam
+					sequi voluptate quas.</p>
+			</section>
+			<!-- Section: Text -->
+
+			<!-- Section: Links -->
+			<section class="">
+				<!--Grid row-->
+				<div class="row">
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">Links</h5>
+
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!" class="text-white">Link 1</a></li>
+							<li><a href="#!" class="text-white">Link 2</a></li>
+							<li><a href="#!" class="text-white">Link 3</a></li>
+							<li><a href="#!" class="text-white">Link 4</a></li>
+						</ul>
+					</div>
+					<!--Grid column-->
+				</div>
+				<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2020 Copyright: <a class="text-white"
+				href="https://mdbootstrap.com/">MDBootstrap.com</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<script src="/webjars/jquery/5.0.1/jquery/jquery.min.js"></script>
+	<script src="/webjars/jquery/5.0.1/popper.js/umd/popper.min.js"></script>
+	<script src="/webjars/jquery/5.0.1/bootstrap/js/bootstrap.min.js"></script>
+</h:body>
+</html>

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.container{
+	margin-left: 20%;
+}
+
+.btn-primary{
+	
+	width: 120px;
+    position: relative;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}

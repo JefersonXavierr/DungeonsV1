@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+h1{
+	text-align: center;
+}
+.table{
+	margin-top: 50px;
+	margin-bottom: 10%;
+}
+.logo{
+	margin-left: 43%;
+}
+
+.main{
+	margin-top: 60px;
+}
+.main2{
+	width: 80%;
+	text-align: center;
+	position:relative;
+	margin-left: 10%;
+	
+}

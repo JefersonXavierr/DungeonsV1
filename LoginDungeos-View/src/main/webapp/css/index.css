@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+h:body{
+    margin-top: 100px;
+}
+.container{
+    max-width: 700px;
+    max-height: auto;
+    position: relative;
+    text-align: center;
+}
+.form-group{
+
+    max-width: 400px;
+    height: auto;
+    position: relative;
+    text-align: center;
+    margin-left: 250px;
+}
+.btn-primary{
+	
+	width: 200px;
+    position: relative;
+    text-align: center;
+    margin-left: 850px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
